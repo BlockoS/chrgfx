@@ -3,7 +3,7 @@
 #include <algorithm>
 
 using namespace png;
-using namespace gfx;
+using namespace chrgfx;
 
 image<index_pixel>* render(bank* chr_bank, const palette* pal,
 													 render_traits* traits)
@@ -12,8 +12,8 @@ image<index_pixel>* render(bank* chr_bank, const palette* pal,
 		throw std::length_error("Tile vector is empty, nothing to render");
 
 	// tile dimensions
-	uint16_t tileWidth = chr_bank->at(0)->get_width(),
-					 tileHeight = chr_bank->at(0)->get_height();
+	u16 tileWidth = chr_bank->at(0)->get_width(),
+			tileHeight = chr_bank->at(0)->get_height();
 
 	// add empty tiles to end of buffer so we have an evenly divisible amount
 	if(chr_bank->size() % traits->cols > 0)
@@ -22,14 +22,14 @@ image<index_pixel>* render(bank* chr_bank, const palette* pal,
 										 new chr(tileWidth, tileHeight));
 
 	// final image dimensions
-	uint16_t
+	u16
 			// ... in tiles
 			img_tileCols = traits->cols,
 			// img_tileRows = (tiles->size() / img_tileCols) + (tiles->size() %
 			// img_tileCols > 0 ? 1 : 0);
 			img_tileRows = chr_bank->size() / img_tileCols;
 
-	uint32_t
+	u32
 			// ... in pixels
 			// to do: add border calculation: height + ((border size * tile rows) +
 			// border size), width + ((border size * tile cols) + border size)
@@ -85,7 +85,7 @@ image<index_pixel>* render(bank* chr_bank, const palette* pal,
 	{
 		auto newPal = new palette(*pal);
 		newPal->erase(newPal->begin(), newPal->begin() + traits->palette_offset);
-		gfx::fill_pal(newPal);
+		chrgfx::fill_pal(newPal);
 		outimg->set_palette(*newPal);
 		delete newPal;
 	}

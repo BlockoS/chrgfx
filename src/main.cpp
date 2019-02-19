@@ -2,7 +2,7 @@
 #include "main.hpp"
 
 using namespace std;
-using namespace gfx;
+using namespace chrgfx;
 
 const map<string, chr_xform*> chrx_list = {
 		{string("1bpp"), new bpp1_cx()},
@@ -71,7 +71,7 @@ int main(int argc, char** argv)
 			}
 			else
 			{
-				work_pal = gfx::make_pal();
+				work_pal = chrgfx::make_pal();
 			}
 		else
 		{

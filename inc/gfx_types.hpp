@@ -9,7 +9,7 @@ typedef uint8_t u8;
 typedef uint16_t u16;
 typedef uint32_t u32;
 
-namespace gfx
+namespace chrgfx
 {
 typedef pixel_buffer<index_pixel> chr;
 typedef std::vector<const chr*> bank;
@@ -51,6 +51,6 @@ class pal_xform
 	virtual const palette* get_pal(u8* data) = 0;
 };
 
-}	// namespace gfx
+}	// namespace chrgfx
 
 #endif
