@@ -9,7 +9,7 @@ image<index_pixel>* render(bank* chr_bank, const palette* pal,
 													 render_traits* traits)
 {
 	if(chr_bank->size() < 1)
-		throw std::length_error("Tile vector is empty, nothing to render");
+		throw std::length_error("CHR vector is empty, nothing to render");
 
 	// tile dimensions
 	u16 tileWidth = chr_bank->at(0)->get_width(),
